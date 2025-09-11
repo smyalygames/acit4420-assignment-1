@@ -19,6 +19,7 @@ class CheckingAccount(BankAccount):
         """
         Withdraws the amount specified from the account, with the additional fee.
         :param: The amount to withdraw, excludes the fee
+        :returns: The withdrawn amount (without the fees)
         """
         super().withdraw(amount + self.fee)
 

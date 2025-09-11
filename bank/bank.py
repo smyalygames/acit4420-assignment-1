@@ -38,6 +38,7 @@ class BankAccount:
         """
         Takes out a specified amount out of the balance.
         :param amount: The amount of money to take out
+        :returns: The withdrawn amount
         """
         self._check_valid(amount, "withdraw")
 

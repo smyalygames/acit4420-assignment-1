@@ -4,7 +4,7 @@ from bank.bank import BankAccount
 class CheckingAccount(BankAccount):
     def __init__(self, name: str, fee: int):
         """
-
+        A bank account that has fees per withdrawal.
         :param name: Name of the account holder
         :param fee: Fixed fee for withdrawals
         """

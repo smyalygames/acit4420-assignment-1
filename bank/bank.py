@@ -1,23 +1,25 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class AccountInformation:
     name: str
     balance: int
 
+
 class BankAccount:
 
     def __init__(self, name: str):
         """
-        Creates a bank account for a person
+        A normal bank account for a person.
         :param name: The name of the person
         """
         self.account_holder = name
-        self.balance = 0 # FIXME handle 2dp, and make sure not to have floating point errors
+        self.balance = 0  # FIXME handle 2dp, and make sure not to have floating point errors
 
     def account_info(self) -> AccountInformation:
         """
-        Gets the name and balance of the account holder
+        Gets the name and balance of the account holder.
         :return:
         """
         return AccountInformation(self.account_holder, self.balance)
@@ -45,7 +47,7 @@ class BankAccount:
     @staticmethod
     def _check_valid(amount: int, action: str) -> None:
         """
-        Checks if the amount of money positive and valid with the functions
+        Checks if the amount of money positive and valid with the functions.
         :param amount: The amount to check
         :param action: The action that the account holder was trying to do. Should be ``deposit`` or ``withdraw``
         """

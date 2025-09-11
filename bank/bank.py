@@ -34,7 +34,7 @@ class BankAccount:
 
         self.balance += amount
 
-    def withdraw(self, amount: int) -> None:
+    def withdraw(self, amount: int) -> int:
         """
         Takes out a specified amount out of the balance.
         :param amount: The amount of money to take out
@@ -43,6 +43,10 @@ class BankAccount:
 
         if self.balance - amount < 0:
             raise ValueError("The amount being withdrawn is more than the balance.")
+
+        self.balance -= amount
+
+        return amount
 
     @staticmethod
     def _check_valid(amount: int, action: str) -> None:

@@ -15,9 +15,11 @@ class CheckingAccount(BankAccount):
 
         self.fee = fee
 
-    def withdraw(self, amount: int) -> None:
+    def withdraw(self, amount: int) -> int:
         """
         Withdraws the amount specified from the account, with the additional fee.
         :param: The amount to withdraw, excludes the fee
         """
         super().withdraw(amount + self.fee)
+
+        return amount

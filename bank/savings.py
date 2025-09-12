@@ -20,7 +20,7 @@ class SavingsAccount(BankAccount):
         :returns: The amount of interest gained.
         """
         # Calculate the amount of interest to be gained
-        interest = self.interest_rate
+        interest = self.balance * self.interest_rate
         # Add the interest to the balance
         self.balance += interest
 

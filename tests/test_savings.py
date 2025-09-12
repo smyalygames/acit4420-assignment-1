@@ -15,4 +15,4 @@ class TestSavingsAccount(TestCase):
         expected_balance = self.balance * (1 + self.interest)
         self.account.apply_interest()
 
-        self.assertEqual(self.account.account_info().balance, expected_balance, "The expected balance is not the same what is on the account.")
+        self.assertEqual(expected_balance, self.account.account_info().balance, "The expected balance is not the same what is on the account.")

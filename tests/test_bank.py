@@ -19,11 +19,11 @@ class TestBankAccount(unittest.TestCase):
         self.assertIsInstance(self.account, BankAccount, "The created bank account is not an instance of BankAccount")
 
         # Checks that the name was processed correctly
-        self.assertEqual(self.account.account_holder, self.name,
+        self.assertEqual(self.name, self.account.account_holder,
                          "The name of the account holder does not match the given name when creating BankAccount")
 
         # Check that the balance is set to 0 by default
-        self.assertEqual(self.account.balance, 0, "Balance should be set to 0 when BankAccount is initialised.")
+        self.assertEqual(0, self.account.balance, "Balance should be set to 0 when BankAccount is initialised.")
 
     def test_account_info(self):
         """
@@ -33,8 +33,8 @@ class TestBankAccount(unittest.TestCase):
         account_info = self.account.account_info()
 
         # Checks that the information given is correct/as expected
-        self.assertEqual(account_info.name, self.name, "Names from account_info() do not match the given name.")
-        self.assertEqual(account_info.balance, 0, "Initialised BankAccount balance should be 0.")
+        self.assertEqual(self.name, account_info.name, "Names from account_info() do not match the given name.")
+        self.assertEqual(0, account_info.balance, "Initialised BankAccount balance should be 0.")
 
         # Checks that the information can be used for comparisons
         new_account = BankAccount(self.name)
@@ -61,13 +61,13 @@ class TestBankAccount(unittest.TestCase):
         deposited = 100
         self.account.deposit(deposited)
 
-        self.assertEqual(self.account.balance, deposited, "Balance does not match what has been deposited.")
+        self.assertEqual(deposited, self.account.balance, "Balance does not match what has been deposited.")
 
         deposit = 50
         self.account.deposit(deposit)
         deposited += deposit
 
-        self.assertEqual(self.account.balance, deposited, "Balance does not match after depositing twice.")
+        self.assertEqual(deposited, self.account.balance, "Balance does not match after depositing twice.")
 
     def test_withdraw(self):
         """
@@ -88,17 +88,17 @@ class TestBankAccount(unittest.TestCase):
         # Withdraw a set amount
         requested_amount = 100
         withdrawn = self.account.withdraw(requested_amount)
-        self.assertEqual(withdrawn, requested_amount, "Requested amount of money was not given when withdrawn.")
-        self.assertEqual(self.account.account_info().balance, initial_balance - requested_amount,
+        self.assertEqual(requested_amount, withdrawn, "Requested amount of money was not given when withdrawn.")
+        self.assertEqual(initial_balance - requested_amount, self.account.account_info().balance,
                          "Balance after withdrawing is not as expected.")
         total_withdrawn = withdrawn
 
         # Checks withdrawing a second time works as expected
         requested_amount = 50
         withdrawn = self.account.withdraw(requested_amount)
-        self.assertEqual(withdrawn, requested_amount, "Requested amount of money was not given when withdrawn.")
+        self.assertEqual(requested_amount, withdrawn, "Requested amount of money was not given when withdrawn.")
         total_withdrawn += withdrawn
-        self.assertEqual(self.account.account_info().balance, initial_balance - total_withdrawn,
+        self.assertEqual(initial_balance - total_withdrawn, self.account.account_info().balance,
                          "Balance after withdrawing is not as expected.")
 
         # Check that the account cannot be overdrawn

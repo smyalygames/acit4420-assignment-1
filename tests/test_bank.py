@@ -115,7 +115,3 @@ class TestBankAccount(unittest.TestCase):
         # Checks that the names are both different
         self.assertNotEqual(self.account.account_info(), account.account_info(),
                             "Account information should be different.")
-
-
-if __name__ == '__main__':
-    unittest.main()

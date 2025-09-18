@@ -10,7 +10,8 @@ class SavingsAccount(BankAccount):
         """
         super().__init__(name)
 
-        # TODO maybe add a check if the interest rate is valid? i.e. not negative.
+        if interest_rate <= 0:
+            raise ValueError("Interest rate has to be positive.")
 
         self.interest_rate = interest_rate
 

@@ -15,7 +15,7 @@ class BankAccount:
         :param name: The name of the person
         """
         self.account_holder = name
-        self.balance = 0  # FIXME handle 2dp, and make sure not to have floating point errors
+        self.balance = 0
 
     def account_info(self) -> AccountInformation:
         """

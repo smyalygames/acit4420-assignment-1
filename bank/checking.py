@@ -10,9 +10,7 @@ class CheckingAccount(BankAccount):
         """
         super().__init__(name)
 
-        if transaction_fee < 0:
-            raise ValueError("The fee cannot be negative.")
-
+        self._check_valid(transaction_fee, "transaction fee")
         self.transaction_fee = transaction_fee
 
     def withdraw(self, amount: int) -> int:

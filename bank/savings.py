@@ -10,8 +10,7 @@ class SavingsAccount(BankAccount):
         """
         super().__init__(name)
 
-        if interest_rate <= 0:
-            raise ValueError("Interest rate has to be positive.")
+        self._check_valid(interest_rate, "interest rate")
 
         self.interest_rate = interest_rate
 
@@ -20,9 +19,14 @@ class SavingsAccount(BankAccount):
         Applies the account's interest rate on the account's balance.
         :returns: The amount of interest gained.
         """
-        # Calculate the amount of interest to be gained
-        interest = self.balance * self.interest_rate
+        # If there is no interest to be applied.
+        if self.balance == 0:
+            return 0
+
+        # Calculate the amount of interest to be gained.
+        # The amount is rounded to the nearest integer to make it fair.
+        interest = round(self.balance * self.interest_rate)
         # Add the interest to the balance
-        self.balance += interest
+        self.deposit(interest)
 
         return interest

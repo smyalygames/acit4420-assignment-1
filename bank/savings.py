@@ -14,7 +14,7 @@ class SavingsAccount(BankAccount):
 
         self.interest_rate = interest_rate
 
-    def apply_interest(self) -> float:
+    def apply_interest(self) -> int:
         """
         Applies the account's interest rate on the account's balance.
         :returns: The amount of interest gained.

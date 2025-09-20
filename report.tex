@@ -17,7 +17,7 @@
 
 \usepackage{fancyvrb}
 
-\setlength{\droptitle}{-5em}
+\setlength{\droptitle}{-6em}
 
 % This should be loaded last
 \usepackage[colorlinks,breaklinks]{hyperref}
@@ -82,6 +82,10 @@ these classes would be a part of the basis of the back-end.
 Therefore, something higher up in the back-end could run checks on the inputted\slash returned
 values, improve logging, or have another class for a person that holds multiple
 types of accounts.
+
+A major consideration for the balance was to use integers instead of a float,
+as floats are inaccurate, and could cause people's balances to be higher or
+lower than expected. Therefore, the decimal point should be added elsewhere.
 
 However, there are not a lot of performance optimizations in the code, other than
 using variables to prevent repetitive calculations. The main focus was on optimizing

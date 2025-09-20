@@ -8,7 +8,6 @@ class AccountInformation:
 
 
 class BankAccount:
-
     def __init__(self, name: str):
         """
         A normal bank account for a person.
@@ -42,15 +41,19 @@ class BankAccount:
         """
         self._check_valid(amount, "withdraw")
 
-        if self.balance - amount < 0:
+        # Calculates the balance after the withdrawal
+        resulting_balance = self.balance - amount
+
+        # Checks that the withdrawal does not go over the balance in the account
+        if resulting_balance < 0:
             raise ValueError("The amount being withdrawn is more than the balance.")
 
-        self.balance -= amount
+        self.balance = resulting_balance
 
         return amount
 
     @staticmethod
-    def _check_valid(amount: int, action: str) -> None:
+    def _check_valid(amount: int | float, action: str) -> None:
         """
         Checks if the amount of money positive and valid with the functions.
         :param amount: The amount to check
@@ -58,6 +61,6 @@ class BankAccount:
         """
         # Checks that the amount specified is valid in general
         if amount < 0:
-            raise ValueError(f"You cannot {action} a negative amount of money.")
+            raise ValueError(f"You cannot have a negative value for {action}.")
         elif amount == 0:
-            raise ValueError(f"You cannot {action} nothing.")
+            raise ValueError(f"You cannot have nothing for {action}.")
